@@ -79,6 +79,7 @@ def image_crop_and_prediction_wo_image_creation(ROI_file_path, Images_file_dir, 
     image_size = tuple(image_size)
     model = model
     total_times = []
+    result = []
     for i in range(len(roi_data)):
         num = i+1
         roi.append(roi_data.loc[num]['left':'high'])
@@ -97,12 +98,13 @@ def image_crop_and_prediction_wo_image_creation(ROI_file_path, Images_file_dir, 
         predict_value["label"] = predict_value["label"].astype(int)
         #predict_classes = model.predict_classes(X)
         predict_classes = predict_value["label"].values
+        result.append(predict_classes)
         total_time = predict_classes.sum()/fps
         total_times.append(total_time)
         os.chdir("../")
         np.savetxt("./ROI{}.csv".format(num), predict_classes, delimiter=",")
         np.savetxt("./ROI{}value.csv".format(num), predict_value, delimiter=",")
-    return total_times
+    return total_times, result
 
 def image_crop_and_prediction(ROI_file_path, Images_file_dir, image_size,
                               model,fps):

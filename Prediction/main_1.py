@@ -145,10 +145,12 @@ def execute():
         save_all_frames(i, "./video{}/images".format(num+1),"image",
                         step = step, ext='jpg', num = num)
         if Crop_txt == "Crop" and Image_create == "Not":
-            total_time_list = image_crop_and_prediction_wo_image_creation(ROIpath, 
+            total_time_list, result = image_crop_and_prediction_wo_image_creation(ROIpath, 
                                                         "./video{}/images".format(num+1),
                                                         image_size,model, fps)
             jump_time.append(total_time_list)
+            result = pd.DataFrame(result, index = ["ROI1", "ROI2", "ROI3", "ROI4"]).T
+            result.to_csv('./result.csv')
         elif Crop_txt == "Crop" and Image_create == "Create":
             total_time_list = image_crop_and_prediction(ROIpath, 
                                                         "./video{}/images".format(num+1),
