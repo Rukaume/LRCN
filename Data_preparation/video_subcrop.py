@@ -46,7 +46,7 @@ roi_data['right'] = roi_data['BX'] + roi_data['Width']
 roi_data['low'] = roi_data['BY'] 
 roi_data['high'] = roi_data['BY'] + roi_data['Height']
 
-roi = roi_data.loc[1]['left':'high']
+roi = roi_data.loc[4]['left':'high']
 
 ####file select & directory setting####
 messagebox.showinfo('selectfiles', 'select image files')
