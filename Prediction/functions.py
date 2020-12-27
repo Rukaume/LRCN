@@ -86,12 +86,13 @@ def image_crop_and_prediction_wo_image_creation(ROI_file_path, Images_file_dir, 
         os.chdir(Images_file_dir)
         left, right, low, high = int(roi[i]['left']),\
                 int(roi[i]['right']),int(roi[i]['low']),int(roi[i]['high'])
-        data = [cv2.resize(cv2.imread(imlist[j])[low:high,left:right], 
+        data = [cv2.resize(cv2.imread(imlist[j],0)[low:high,left:right], 
                            image_size) for j in tqdm(range(len(imlist)))]
         X = np.asarray(data)
         X = X.astype('float32')
         X = X / 255.0
         X = np.expand_dims(X, 1)
+        X = np.expand_dims(X, 4)
         predict_value  = pd.DataFrame(model.predict(X), columns = [0,1])
         predict_value["label"] = predict_value[0] - predict_value[1]
         predict_value["label"] = predict_value["label"] < 0
