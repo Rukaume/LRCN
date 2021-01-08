@@ -46,7 +46,7 @@ roi_data['right'] = roi_data['BX'] + roi_data['Width']
 roi_data['low'] = roi_data['BY'] 
 roi_data['high'] = roi_data['BY'] + roi_data['Height']
 
-roi = roi_data.loc[4]['left':'high']
+roi = roi_data.loc[3]['left':'high']
 
 ####file select & directory setting####
 messagebox.showinfo('selectfiles', 'select image files')
@@ -60,12 +60,12 @@ folderpath = os.path.dirname(path)
 os.chdir(folderpath)
 
 imlist = os.listdir("./")
-os.makedirs("../chamber1", exist_ok = True)
+os.makedirs("../chamber3", exist_ok = True)
 
 for i in tqdm(range(len(imlist))):
     tempimage = cv2.imread(imlist[i])
     left, right, low, high = int(roi['left']),\
             int(roi['right']),int(roi['low']),int(roi['high'])
     subimage = tempimage[low:high,left:right]
-    cv2.imwrite("../chamber1/{}.jpg".format(str(i).zfill(5)), subimage)
+    cv2.imwrite("../chamber3/{}.jpg".format(str(i).zfill(5)), subimage)
     
