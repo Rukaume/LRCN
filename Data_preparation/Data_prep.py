@@ -47,7 +47,7 @@ def adjust(img, alpha=1.0, beta=0.0):
     return np.clip(dst, 0, 255).astype(np.uint8)
 
 
-def save_frame(videopath, chamber, per_fps, image_size, Gray, filename):
+def save_frame(videopath, chamber, per_fps, image_size, Gray, filename,adjust_num):
     cap = cv2.VideoCapture(videopath)
     #exception catch for file read 
     if not cap.isOpened():
@@ -66,7 +66,8 @@ def save_frame(videopath, chamber, per_fps, image_size, Gray, filename):
             subcrop_im = frame[ROI[chamber][2]:ROI[chamber][3],ROI[chamber][0]:ROI[chamber][1]]
             resized_im = cv2.resize(subcrop_im, image_size)
             if Gray == 0:
-                image = cv2.cvtColor(resized_im, cv2.COLOR_BGR2GRAY)
+                image = adjust(cv2.cvtColor(resized_im, cv2.COLOR_BGR2GRAY), 
+                               adjust_num, beta = 0.0)  
             data.append(image)
     data = np.asarray(data)
     np.save("./{0}.npy".format(filename), data)
@@ -79,7 +80,8 @@ def main():
     image_size = input("imagesize").split(",")
     image_size = (int(image_size[0]),int(image_size[1]))
     Gray = int(input("gray = 0, color = 1"))
-    save_frame(videopath, chamber, per_fps, image_size, Gray, filename)
+    adjust_num = float(input("adjust value"))
+    save_frame(videopath, chamber, per_fps, image_size, Gray, filename, adjust_num)
 
 main()
 
