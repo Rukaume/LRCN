@@ -16,4 +16,4 @@ These scripts enable you to predict an animal behavioral phenotype. For example,
 
 ## Author
 
-[Rumetake]
+[Rukaume]
