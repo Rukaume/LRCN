@@ -1,6 +1,6 @@
-LRCN for mouse behavioral phenotype
+LRCN for behavioral phenotype
 ==
-These scripts enable you to predict a mice behavioral phenotype. For example, if you want to detect a quiescent state, the trained model returns the video's prediction data. 
+These scripts enable you to predict an animal behavioral phenotype. For example, if you want to detect a quiescent state, the trained model returns the prediction data. 
 
 ## Description
 
