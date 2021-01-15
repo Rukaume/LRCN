@@ -75,12 +75,12 @@ def save_frame(videopath, chamber, per_fps, image_size, Gray, filename,adjust_nu
 def main():
     videopath = file_select()
     filename = os.path.splitext(os.path.basename(videopath))[0]
-    chamber = int(input("which chamber")) - 1
-    per_fps = int(input("input 1/fps,3fps = 10"))
-    image_size = input("imagesize").split(",")
+    chamber = int(input("chamber num: ")) - 1
+    per_fps = int(input("input 1/fps,3fps = 10: "))
+    image_size = input("imagesize: ").split(",")
     image_size = (int(image_size[0]),int(image_size[1]))
-    Gray = int(input("gray = 0, color = 1"))
-    adjust_num = float(input("adjust value"))
+    Gray = int(input("gray = 0, color = 1: "))
+    adjust_num = float(input("adjust value: "))
     save_frame(videopath, chamber, per_fps, image_size, Gray, filename, adjust_num)
 
 
