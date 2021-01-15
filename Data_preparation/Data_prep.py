@@ -70,7 +70,7 @@ def save_frame(videopath, chamber, per_fps, image_size, Gray, filename,adjust_nu
                                adjust_num, beta = 0.0)  
             data.append(image)
     data = np.asarray(data)
-    np.save("./{0}.npy".format(filename), data)
+    np.save("./{0}_ch{1}.npy".format(filename,chamber), data)
 
 def main():
     videopath = file_select()
@@ -83,7 +83,6 @@ def main():
     adjust_num = float(input("adjust value"))
     save_frame(videopath, chamber, per_fps, image_size, Gray, filename, adjust_num)
 
-main()
 
 if __name__ == '__main__':
     main()
