@@ -46,14 +46,15 @@ os.chdir(imagedir)
 dirname = os.path.split(imagedir)
 dir_name_list = os.listdir("./")
 #exclude non-image files
-image_name_list = [i for i in dir_name_list if os.path.splitext(i)[1] == '.jpg']
+image_name_list = [i for i in dir_name_list if os.path.splitext(i)[1] == '.jpg'\
+                   or os.path.splitext(i)[1] == '.png']
 
 
 data = []
 
 
 for j in tqdm(range(len(image_name_list))[0:num]):
-    data.append(cv2.resize(cv2.imread(image_name_list[j]), image_size))
+    data.append(cv2.resize(cv2.imread(image_name_list[j],0), image_size))
 
 data = np.asarray(data)
 np.save("../{0}.npy".format(dirname[-1]), data)
