@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 """
 Created on Thu Sep  3 09:30:18 2020
@@ -29,7 +30,7 @@ if image_file_path == "":
 imagedir = os.path.dirname(image_file_path)
 
 
-num = int(input('please input image num'))
+num = int(input('please input thinning out num'))
 image_size = tuple([int(i) for i in \
                     input("コンマ区切りで画像サイズを指定 (横,縦)の順で").split(",")])
 
@@ -53,7 +54,7 @@ image_name_list = [i for i in dir_name_list if os.path.splitext(i)[1] == '.jpg'\
 data = []
 
 
-for j in tqdm(range(len(image_name_list))[0:num]):
+for j in tqdm(range(len(image_name_list))[::num]):
     data.append(cv2.resize(cv2.imread(image_name_list[j],0), image_size))
 
 data = np.asarray(data)
