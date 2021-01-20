@@ -13,7 +13,7 @@ These scripts enable you to predict an animal behavioral phenotype. For example,
 
 3. Annotation by python video annotator or ImageJ and make .csv file
 
-4. .npy file prep (run Data_prep.py)
+4. .npy file prep (run Images_to_numpy.py)
 
 5. upload those files to Google drive
 
