@@ -32,7 +32,7 @@ Output is .csv file (jump time)
 
 (Annotated video make) 
 
-10. make annotated video (Annotatedvideo2.py)
+10. make annotated video (VideoAnnotation.py)
 
 
 
